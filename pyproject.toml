@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "openai-chatbot"
+version = "0.1.0"
+description = "demo chatbot based on openAI APIs"
+authors = ["yusuf <yachour31@gmail.com>"]
+readme = "README.md"
+packages = [{include = "openai_chatbot"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.1.7"
+djangorestframework = "^3.14.0"
+openai = "^0.26.5"
+django-decouple = "^2.1"
+django-extensions = "^3.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
