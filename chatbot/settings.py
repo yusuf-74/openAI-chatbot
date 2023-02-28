@@ -49,6 +49,15 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+# settings.py
+CORS_ORIGIN_WHITELIST = [
+    'https://bld-chatbot.azurewebsites.net',
+    # Add any other domains that should be allowed to make CORS requests.
+]
+# settings.py
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 
