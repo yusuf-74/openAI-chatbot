@@ -30,6 +30,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# settings.py
+CORS_ALLOWED_ORIGINS = [
+    "https://bld-chatbot.azurewebsites.net",
+    # add any additional domains that should be allowed to make requests here
+]
+
+
 
 # Application definition
 
