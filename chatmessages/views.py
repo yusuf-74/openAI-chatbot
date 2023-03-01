@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Message, Response as ChatResponse
 from .serializers import MessageSerializer, ResponseSerializer,ViewMessageSerializer
-
+from rest_framework.permissions import IsAuthenticated
 import openai
 
 
@@ -45,7 +46,8 @@ class MessageView(APIView):
         
         return Response(messageSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class Test(APIView):
+class ChatView(LoginRequiredMixin,APIView):
+    login_url = 'login'
     def get(self, request):
         messages = Message.objects.filter(user = request.user.id)
         serializer = ViewMessageSerializer(messages, many=True)
@@ -68,6 +70,6 @@ class Test(APIView):
                 return Response(responseSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
             res = ViewMessageSerializer(message)
-            return redirect('test')
+            return redirect('chat')
         
         return Response(messageSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
